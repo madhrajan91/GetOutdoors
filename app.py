@@ -13,6 +13,7 @@ app = Flask(__name__)
 
 database_name = "getoutdoors"
 database_path = os.environ['DATABASE_URL']
+print(database_path)
 #database_path = "postgres://{}/{}".format('localhost:5432', database_name)
 app.config["SQLALCHEMY_DATABASE_URI"] = database_path
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False

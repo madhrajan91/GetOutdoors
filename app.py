@@ -12,7 +12,8 @@ from auth import AuthError, requires_auth, AUTH0_AUTHORIZE_URL, AUTH0_LOGOUT
 app = Flask(__name__)
 
 database_name = "getoutdoors"
-database_path = os.environ['DATABASE_URL']
+#database_path = os.environ['DATABASE_URL']
+database_path = "postgres://tnuafhtklsvdlh:1176aa8def9e229bd09221139e01dfcfbd84a153ff0fd77a9787c310665a62a1@ec2-174-129-254-223.compute-1.amazonaws.com:5432/dfdpv7eca7i8b7"
 print(database_path)
 #database_path = "postgres://{}/{}".format('localhost:5432', database_name)
 app.config["SQLALCHEMY_DATABASE_URI"] = database_path

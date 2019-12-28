@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import json
 import sys
+import os
 
 from models import db,  DBHelper, Task, Series, Challenge
 from auth import AuthError, requires_auth, AUTH0_AUTHORIZE_URL, AUTH0_LOGOUT
@@ -11,7 +12,8 @@ from auth import AuthError, requires_auth, AUTH0_AUTHORIZE_URL, AUTH0_LOGOUT
 app = Flask(__name__)
 
 database_name = "getoutdoors"
-database_path = "postgres://{}/{}".format('localhost:5432', database_name)
+database_path = os.environ['DATABASE_URL']
+#database_path = "postgres://{}/{}".format('localhost:5432', database_name)
 app.config["SQLALCHEMY_DATABASE_URI"] = database_path
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 

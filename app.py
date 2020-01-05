@@ -60,45 +60,70 @@ def get_tasks(jwt):
 @requires_auth('post:tasks:series:challenges')
 def create_task(jwt):
     data = request.get_json()
-    
-    task = Task(name=data["name"],
+    error = False
+    try:
+        task = Task(name=data["name"],
                 state=data["state"],
                 country=data["country"])
     
-    isTest = False
-    if "isTest" in data:
-         isTest = data["isTest"]
-    try:
+        isTest = False
+        if "isTest" in data:
+            isTest = data["isTest"]
+    
         DBHelper.insert(task, isTest)
     except:
         DBHelper.rollback()
-        abort(404)
+        error = True
     finally:
         DBHelper.close()
     
+    if error:
+        abort(404)
     return jsonify({
       "success": True
     })
+
+
+@app.route('/task/<task_id>', methods=['GET'])
+@requires_auth()
+def get_task(jwt, task_id):
+    error = False
+
+    task = Task.query.get(task_id)
+    if task is None:
+        abort(404)
+
+    return jsonify({
+            'name': task.name,
+            'state': task.state,
+            'country': task.country
+        })
 
 @app.route('/task/<task_id>', methods=['PATCH'])
 @requires_auth('patch:tasks:series:challenges')
 def update_task(jwt, task_id):
     data = request.get_json()
+    error = False
     try:
         task = Task.query.get(task_id)
-        if "name" in data:
-            task.name = data["name"]
-        if "state" in data:
-            task.state = data["state"]
-        if "country" in data:
-            task.country = data["country"]
-        DBHelper.update()
+        if task is None:
+            error = True
+        else:
+            if "name" in data:
+                task.name = data["name"]
+            if "state" in data:
+                task.state = data["state"]
+            if "country" in data:
+                task.country = data["country"]
+            DBHelper.update()
     except:
         print(sys.exc_info())
         DBHelper.rollback()
-        abort(404)
+        error = True
     finally:
         DBHelper.close()
+    if error:
+        abort(404)
     return jsonify({
       "success": True
     })
@@ -106,14 +131,20 @@ def update_task(jwt, task_id):
 @app.route('/task/<task_id>', methods=['DELETE'])
 @requires_auth('delete:tasks:series:challenges')
 def delete_task(jwt, task_id):
+    error = False
     try:
         task = Task.query.get(task_id)
-        DBHelper.delete(task)
+        if task is None:
+            error = True
+        else:
+            DBHelper.delete(task)
     except:
         DBHelper.rollback()
-        abort(404)
+        erro = True
     finally:
         DBHelper.close()
+    if error:
+        abort(404)
     return jsonify({
       "success": True
     })
@@ -142,20 +173,22 @@ def get_series(jwt):
 @requires_auth('post:tasks:series:challenges')
 def create_series(jwt):
     data = request.get_json()
-    series = Series(name=data["name"],
+    error = False
+    try:
+        series = Series(name=data["name"],
                   description=data["description"]
                 )
-    try:
         isTest = False
         if "isTest" in data:
             isTest = data["isTest"]
         DBHelper.insert(series)
     except:
         DBHelper.rollback()
-        abort(404)
+        error = True
     finally:
         DBHelper.close()
-    
+    if error:
+        abort(404)
     return jsonify({
       "success": True
     })
@@ -164,7 +197,8 @@ def create_series(jwt):
 @requires_auth()
 def get_serie(series_id):
     serie = Series.query.get(series_id)
-
+    if serie is None:
+        abort(404)
     result = []
     challenges = serie.challenges
 
@@ -186,21 +220,27 @@ def get_serie(series_id):
 @app.route('/series/<series_id>', methods=['PATCH'])
 @requires_auth('patch:tasks:series:challenges')
 def update_series(jwt, series_id):
+    error = False
     data = request.get_json()
     try:
         series = Series.query.get(series_id)
-        if "name" in data:
-            series.name = data["name"]
-        if "description" in data:
-            series.state = data["description"]
+        if series is None:
+            error = True
+        else:
+            if "name" in data:
+                series.name = data["name"]
+            if "description" in data:
+                series.state = data["description"]
 
         DBHelper.update()
     except:
         print(sys.exc_info())
         DBHelper.rollback()
-        abort(404)
+        error = True
     finally:
         DBHelper.close()
+    if error:
+        abort(404)
     return jsonify({
       "success": True
     })
@@ -208,14 +248,20 @@ def update_series(jwt, series_id):
 @app.route('/series/<series_id>', methods=['DELETE'])
 @requires_auth('delete:tasks:series:challenges')
 def delete_series(jwt, series_id):
+    error = False
     try:
         series = Series.query.get(series_id)
-        DBHelper.delete(series)
+        if series is None:
+            error = True
+        else:
+            DBHelper.delete(series)
     except:
         DBHelper.rollback()
-        abort(404)
+        error = True
     finally:
         DBHelper.close()
+    if error:
+        abort(404)
     return jsonify({
       "success": True
     })
@@ -223,21 +269,23 @@ def delete_series(jwt, series_id):
 @app.route('/challenges', methods=['POST'])
 @requires_auth('post:tasks:series:challenges')
 def create_challenge(jwt):
-    data = request.get_json()
-    challenge = Challenge(task_id=data["task_id"],
+    data = request.get_json() 
+    error = False
+    try:
+        challenge = Challenge(task_id=data["task_id"],
                          series_id=data["series_id"]
                 )
-    try:
         isTest = False
         if "isTest" in data:
             isTest = data["isTest"]
         DBHelper.insert(challenge)
     except:
         DBHelper.rollback()
-        abort(404)
+        error = True
     finally:
         DBHelper.close()
-    
+    if error:
+        abort(404)
     return jsonify({
       "success": True
     })
@@ -246,19 +294,25 @@ def create_challenge(jwt):
 @requires_auth('patch:tasks:series:challenges')
 def update_challenge(jwt, challenge_id):
     data = request.get_json()
+    error = False
     try:
         challenge = Challenge.query.get(challenge_id)
-        if "task_id" in data and "series_id" in data:
-            challenge.task_id = data["task_id"]
-            challenge.series_id = data["series_id"]
+        if challenge is None:
+            error = True
+        else:
+            if "task_id" in data and "series_id" in data:
+                challenge.task_id = data["task_id"]
+                challenge.series_id = data["series_id"]
 
-        DBHelper.update()
+            DBHelper.update()
     except:
         print(sys.exc_info())
         DBHelper.rollback()
-        abort(404)
+        error = True
     finally:
         DBHelper.close()
+    if error:
+        abort(404)
     return jsonify({
       "success": True
     })
@@ -266,14 +320,20 @@ def update_challenge(jwt, challenge_id):
 @app.route('/challenge/<challenge_id>', methods=['DELETE'])
 @requires_auth('delete:tasks:series:challenges')
 def delete_challenge(jwt, challenge_id):
+    error = False
     try:
         challenge = Challenge.query.get(challenge_id)
-        DBHelper.delete(challenge)
+        if challenge is None:
+            error = True
+        else:
+            DBHelper.delete(challenge)
     except:
         DBHelper.rollback()
-        abort(404)
+        error = True
     finally:
         DBHelper.close()
+    if error:
+        abort(404)
     return jsonify({
       "success": True
     })

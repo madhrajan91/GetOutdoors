@@ -11,7 +11,7 @@ from models import db, DBHelper, Task, Series, Challenge
 
 testingUsers = {
     'admin@abc.com': 'admin123&',
-    'challengecreator@abc.com': 'challenger123&'
+    'user@abc.com': 'user123&'
 }
 
 
@@ -69,7 +69,9 @@ class GetOutdoorsCase(unittest.TestCase):
             DBHelper.close()
         return result
 
-    
+    '''
+    Create dummy tasks series challenges
+    '''
     def createTask(self, name="testTask2"):
         task = Task(name=name, state= "AZ", country="USA")
         return self.createEntity(task)
@@ -84,21 +86,67 @@ class GetOutdoorsCase(unittest.TestCase):
         challenge = Challenge(task_id = task["id"], series_id = series["id"])
         return self.createEntity(challenge)
 
+    # unauthorized user = failed
+    # user must be logged in
     def test_get_tasks_unauthorized(self):
         res = self.client.get("/tasks")
         self.assertEqual(res.status_code, 401)
 
 
-
-    def test_get_tasks_authorized(self):
+    # get tasks
+    def test_get_tasks_admin_authorized(self):
+        print('get tasks by admin')
         self.client.environ_base['HTTP_AUTHORIZATION'] = getUserTokenHeaders()['authorization']
         res = self.client.get("/tasks")
         self.assertEqual(res.status_code, 200)
 
         data = json.loads(res.data)
+        self.assertNotEqual(data["tasks"], [])
 
+    def test_get_tasks_authorized_user(self):
+        print('get tasks by user')
+        # positive
+        self.client.environ_base['HTTP_AUTHORIZATION'] = getUserTokenHeaders('user@abc.com')['authorization']
+        res = self.client.get("/tasks")
+        self.assertEqual(res.status_code, 200)
+
+        data = json.loads(res.data)
+        self.assertNotEqual(data["tasks"], [])
+
+    def test_get_task_authorized(self):
+        print('get task by id')
+
+        task = self.createTask()
+    
+        self.client.environ_base['HTTP_AUTHORIZATION'] = getUserTokenHeaders()['authorization']
+        res = self.client.get("/task/"+str(task["id"]),)
+        self.assertEqual(res.status_code, 200)
+
+        
+        data = json.loads(res.data)
+        #verify response data
+        self.assertEqual(data["name"], "testTask2")
+        self.assertEqual(data["state"], "AZ")
+        self.assertEqual(data["country"], "USA")
+    
+    def test_create_tasks_user_unauthorized(self):
+        print('create task user negative')
+        # positive
+        self.client.environ_base['HTTP_AUTHORIZATION'] = getUserTokenHeaders('user@abc.com')['authorization']
+        res = self.client.post("/tasks",
+                                data=json.dumps({
+                                    "name": "testTask",
+                                    "state": "testState",
+                                    "country": "testCountry",
+                                    "isTest": True
+                                }),  content_type="application/json")
+        # user cannot create
+        # they must see a 403 permission error
+        self.assertEqual(res.status_code, 403)
+       
     def test_create_tasks_authorized(self):
         print('create task')
+        # positive
         self.client.environ_base['HTTP_AUTHORIZATION'] = getUserTokenHeaders()['authorization']
         res = self.client.post("/tasks",
                                 data=json.dumps({
@@ -112,7 +160,18 @@ class GetOutdoorsCase(unittest.TestCase):
         data = json.loads(res.data)
         #verify response data
         self.assertEqual(data["success"], True)
-        
+
+        # failure
+        res = self.client.post("/tasks",
+                                data=json.dumps({ # no name
+                                    "country": "testCountry",
+                                    "isTest": True
+                                }),  content_type="application/json")
+        self.assertEqual(res.status_code, 404)
+       
+        data = json.loads(res.data)
+        #verify response data
+        self.assertEqual(data["success"], False)
 
     def test_patch_task_authorized(self):
         print('patch task')
@@ -132,6 +191,19 @@ class GetOutdoorsCase(unittest.TestCase):
 
         updatedTask = Task.query.get(task["id"])
         self.assertEqual(updatedTask.name,"Aggasiz")
+
+        #negative
+        res = self.client.patch("/task/-1",
+                                data=json.dumps({
+                                    "name": "Aggasiz"
+                                }),  content_type="application/json")
+        self.assertEqual(res.status_code, 404)
+
+        
+        data = json.loads(res.data)
+        #verify response data
+        self.assertEqual(data["success"], False)
+
     
     def test_delete_task_authorized(self):
         self.client.environ_base['HTTP_AUTHORIZATION'] = getUserTokenHeaders()['authorization']
@@ -145,6 +217,14 @@ class GetOutdoorsCase(unittest.TestCase):
         self.assertEqual(data["success"], True)
         self.assertEqual(len(Task.query.filter(Task.id == task["id"]).all()), 0)
 
+        # negative
+        res = self.client.delete("/task/-1")
+        self.assertEqual(res.status_code, 404)
+
+        data = json.loads(res.data)
+        #verify response data
+        self.assertEqual(data["success"], False)
+ 
     def test_get_series(self):
         self.client.environ_base['HTTP_AUTHORIZATION'] = getUserTokenHeaders()['authorization']
         res = self.client.get("/series")
@@ -168,6 +248,17 @@ class GetOutdoorsCase(unittest.TestCase):
         #verify response data
         self.assertEqual(data["success"], True)
 
+        # negative
+        res = self.client.post("/series",
+                                data=json.dumps({
+                                    "description": "testState"
+                                }),  content_type="application/json")
+        self.assertEqual(res.status_code, 404)
+       
+        data = json.loads(res.data)
+        #verify response data
+        self.assertEqual(data["success"], False)
+
     def test_patch_series_authorized(self):
         print('patch series')
         series =  self.createSeries()
@@ -187,6 +278,19 @@ class GetOutdoorsCase(unittest.TestCase):
         updatedSeries = Series.query.get(series["id"])
         self.assertEqual(updatedSeries.name,"World Mountain")
 
+
+        #negative
+        res = self.client.patch("/series/-1",
+                                data=json.dumps({
+                                    "name": "World Mountain"
+                                }),  content_type="application/json")
+        self.assertEqual(res.status_code, 404)
+
+        
+        data = json.loads(res.data)
+        #verify response data
+        self.assertEqual(data["success"], False)
+
   
     def test_delete_series_authorized(self):
         print('delete series')
@@ -198,6 +302,14 @@ class GetOutdoorsCase(unittest.TestCase):
         #verify response data
         self.assertEqual(data["success"], True)
         self.assertEqual(len(Series.query.filter(Series.id == series["id"]).all()), 0)
+
+        # negative
+        res = self.client.delete("/series/-1")
+
+        data = json.loads(res.data)
+        #verify response data
+        self.assertEqual(res.status_code, 404)
+        self.assertEqual(data["success"], False)
 
     def test_create_challenge_authorized(self):
         print('create challenge')
@@ -217,6 +329,17 @@ class GetOutdoorsCase(unittest.TestCase):
         data = json.loads(res.data)
         #verify response data
         self.assertEqual(data["success"], True)
+
+        # negative
+        res = self.client.post("/challenges",
+                                data=json.dumps({
+                                    "series_id": str(series["id"])
+                                }),  content_type="application/json")
+        self.assertEqual(res.status_code, 404)
+       
+        data = json.loads(res.data)
+        #verify response data
+        self.assertEqual(data["success"], False)
 
     def test_patch_challenge_authorized(self):
         print('patch challenge')
@@ -247,6 +370,17 @@ class GetOutdoorsCase(unittest.TestCase):
         updatedChallenge = Challenge.query.get(challenge["id"])
         self.assertEqual(updatedChallenge.task.name, "UpdatedTask")
 
+        # negative
+        res = self.client.patch("/challenge/-1",
+                                data=json.dumps({
+                                    "series_id": str(orgSeriesId)
+                                }),  content_type="application/json")
+        self.assertEqual(res.status_code, 404)
+
+        data = json.loads(res.data)
+        #verify response data
+        self.assertEqual(data["success"], False)
+
 
     def test_delete_challenge_authorized(self):
         print('delete challenge')
@@ -257,6 +391,14 @@ class GetOutdoorsCase(unittest.TestCase):
         data = json.loads(res.data)
         #verify response data
         self.assertEqual(data["success"], True)
+        self.assertEqual(len(Challenge.query.filter(Challenge.id == challenge["id"]).all()), 0)
+
+        res = self.client.delete("/challenge/-1")
+        self.assertEqual(res.status_code, 404)
+
+        data = json.loads(res.data)
+        #verify response data
+        self.assertEqual(data["success"], False)
         self.assertEqual(len(Challenge.query.filter(Challenge.id == challenge["id"]).all()), 0)
 
 # Make the tests conveniently executable

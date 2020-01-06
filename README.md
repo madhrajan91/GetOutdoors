@@ -31,6 +31,10 @@ username, password
 GetOutdoors.postman_collection.json
 has all the requests. You may need to pass in the correct token
 
+These get requests are nicely JSON formatted
+GET series
+GET tasks 
+
 
 # Full Stack Trivia API Backend
 

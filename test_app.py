@@ -240,6 +240,7 @@ class GetOutdoorsCase(unittest.TestCase):
         self.assertEqual(res.status_code, 200)
 
         data = json.loads(res.data)
+        self.assertNotEqual(data["series"], [])
 
 
     def test_create_series_authorized(self):
@@ -320,7 +321,15 @@ class GetOutdoorsCase(unittest.TestCase):
         #verify response data
         self.assertEqual(res.status_code, 404)
         self.assertEqual(data["success"], False)
+    
+    def test_get_challenges_authorized(self):
+        self.client.environ_base['HTTP_AUTHORIZATION'] = getUserTokenHeaders()['authorization']
+        res = self.client.get("/challenges")
+        self.assertEqual(res.status_code, 200)
 
+        data = json.loads(res.data)
+        self.assertNotEqual(data["challenges"], [])
+    
     def test_create_challenge_authorized(self):
         print('create challenge')
 

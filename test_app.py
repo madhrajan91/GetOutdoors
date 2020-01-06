@@ -94,6 +94,9 @@ class GetOutdoorsCase(unittest.TestCase):
         challenge = Challenge(task_id = task["id"], series_id = series["id"])
         return self.createEntity(challenge)
 
+    '''
+    ############### TESTS BEGIN ###################
+    '''
     # unauthorized user = failed
     # user must be logged in
     def test_get_tasks_unauthorized(self):

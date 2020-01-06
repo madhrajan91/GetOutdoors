@@ -18,6 +18,8 @@ Tasks and Series are associated by relationships through the postgres table Chal
 
 Tables are Tasks, Series and Challenges
 
+
+
 # ROLES
 username, password
 'admin@abc.com', 'admin123&' {Can create, read, update, delete tasks, series and challenges}
@@ -25,7 +27,9 @@ username, password
 'user@abc.com', 'user123&' {can get tasks and series} No Permissions required but they still need to be authenticated with a valid token to get the tasks and sereis
 
 
-
+# POSTMAN Collection
+GetOutdoors.postman_collection.json
+has all the requests. You may need to pass in the correct token
 
 
 # Full Stack Trivia API Backend

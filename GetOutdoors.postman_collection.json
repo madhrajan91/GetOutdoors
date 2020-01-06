@@ -375,6 +375,36 @@
 			"name": "challenges",
 			"item": [
 				{
+					"name": "GetChallenges",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5UbEROekV4UmpVNE9USXpSalk1TmtFMk0wUTNORFZFUWpoRlFUaERORFl3TkRZM05UazROUSJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZGVudGl0eWFjY2Vzcy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWRmOTcwMDIzNTZiMzcwZTllMTg4NDlkIiwiYXVkIjpbIm91dGRvb3JzIiwiaHR0cHM6Ly9kZXYtaWRlbnRpdHlhY2Nlc3MuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU3ODI3Njg4MCwiZXhwIjoxNTc4Mjg0MDgwLCJhenAiOiI3cjZwN1lMQ1JOSm5RZXVPazV6TXF3UHJzSmVERFFNbyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJnZXQ6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJwYXRjaDp0YXNrczpzZXJpZXM6Y2hhbGxlbmdlcyIsInBvc3Q6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiXX0.rCZyqCV2Lwlh1eKdThiXilpBKoWeeQ-sa_GduFWsFy2V-orLzwmc6uqdkkatmJ31z4B09dn5SKm3kFNVAeBr-0kM-a9bTuklr62fR8lHlqBtTqtyaYA9LDa8jCSgIwRTNU1d-CEThCpXlamv__tv_XN8gv1GvcJSUv7YWn0RIMAWGDyGfia3kiIZZN9BaxxyehcGlxoH3sLA6aJhryPhmn2r_ieSPpwj6mh3TmV96azMV_RPS1ytXheVXNLdvXDqeFr5X3LNb65rQ7yyPmTcW9WFE_vFocsT6FbVvGt9r-XKYQijwCUIVGnaOi7LjOPekUNawdh9xtAXbvTjJ1hzeQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://outdoorschallenge.herokuapp.com/challenges",
+							"protocol": "https",
+							"host": [
+								"outdoorschallenge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"challenges"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "PostChallenges",
 					"request": {
 						"auth": {

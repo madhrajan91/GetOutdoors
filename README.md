@@ -1,3 +1,33 @@
+# APP ON HEROKU
+https://outdoorschallenge.herokuapp.com/
+https://outdoorschallenge.herokuapp.com/login-results
+
+https://outdoorschallenge.herokuapp.com/logout
+
+
+
+Tasks
+- A collection of mountains that people can summit
+example: mount washington, mount everest, katahdin, ....
+
+Series
+- A collection of tasks
+- tasks could belong to multiple series
+
+Tasks and Series are associated by relationships through the postgres table Challenges
+
+Tables are Tasks, Series and Challenges
+
+# ROLES
+username, password
+'admin@abc.com', 'admin123&' {Can create, read, update, delete tasks, series and challenges}
+
+'user@abc.com', 'user123&' {can get tasks and series} No Permissions required but they still need to be authenticated with a valid token to get the tasks and sereis
+
+
+
+
+
 # Full Stack Trivia API Backend
 
 ## Getting Started

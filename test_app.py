@@ -137,6 +137,7 @@ class GetOutdoorsCase(unittest.TestCase):
         self.assertEqual(data["state"], "AZ")
         self.assertEqual(data["country"], "USA")
     
+    # Negative test A regular user cannot create a task
     def test_create_tasks_user_unauthorized(self):
         print('create task user negative')
         # positive

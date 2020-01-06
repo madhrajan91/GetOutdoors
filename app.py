@@ -282,6 +282,22 @@ def delete_series(jwt, series_id):
       "success": True
     })
 
+@app.route('/challenges', methods=['GET'])
+@requires_auth()
+def get_challenges(jwt):
+    challenges = Challenge.query.all()
+
+    result = []
+    for challenge in challenges:
+        result.append({
+            'id': challenge.id,
+            'task_id': challenge.task_id,
+            'series_id': challenge.series_id
+        })
+    return jsonify({
+            'challenges':result
+        })
+
 @app.route('/challenges', methods=['POST'])
 @requires_auth('post:tasks:series:challenges')
 def create_challenge(jwt):

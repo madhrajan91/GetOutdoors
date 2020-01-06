@@ -93,11 +93,22 @@ def get_task(jwt, task_id):
     if task is None:
         abort(404)
 
+    s = []
+    for challenge in challenges:
+        series = challenge.series
+        s.append({
+            "id": series.id,
+            "name": series.name,  
+            "description": series.description
+        })
+
+
     return jsonify({
             'id': task.id,
             'name': task.name,
             'state': task.state,
-            'country': task.country
+            'country': task.country,
+            'series': s
         })
 
 @app.route('/task/<task_id>', methods=['PATCH'])

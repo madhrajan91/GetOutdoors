@@ -88,6 +88,8 @@ class Challenge(Base):
     series = db.relationship("Series", backref=db.backref("challenges"))
 
 '''
+
+Ignore these 
 Users
 '''
 class User(Entity):

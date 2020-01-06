@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, abort, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_cors import CORS, cross_origin
 from flask_migrate import Migrate
 import json
 import sys
@@ -13,9 +13,8 @@ app = Flask(__name__)
 
 database_name = "getoutdoors"
 #database_path = os.environ['DATABASE_URL']
-database_path = "postgres://tnuafhtklsvdlh:1176aa8def9e229bd09221139e01dfcfbd84a153ff0fd77a9787c310665a62a1@ec2-174-129-254-223.compute-1.amazonaws.com:5432/dfdpv7eca7i8b7"
-print(database_path)
 #database_path = "postgres://{}/{}".format('localhost:5432', database_name)
+database_path = "postgres://tnuafhtklsvdlh:1176aa8def9e229bd09221139e01dfcfbd84a153ff0fd77a9787c310665a62a1@ec2-174-129-254-223.compute-1.amazonaws.com:5432/dfdpv7eca7i8b7"
 app.config["SQLALCHEMY_DATABASE_URI"] = database_path
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
@@ -24,7 +23,7 @@ db.app = app # this needs to be inserted
 #db.create_all()
 #migrate
 migrate =  Migrate(app, db)
-
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 @app.route('/')
 def index():

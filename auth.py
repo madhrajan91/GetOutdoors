@@ -13,7 +13,7 @@ ALGORITHMS = ['RS256']
 API_AUDIENCE = 'outdoors'
 
 #url with scope (for reference only)
-AUTH0_AUTHORIZE_URL="https://dev-identityaccess.auth0.com/authorize?client_id=7r6p7YLCRNJnQeuOk5zMqwPrsJeDDQMo&audience=outdoors&response_type=token&scope=openid+profile+email&redirect_uri=http://localhost:5000/login-results"
+AUTH0_AUTHORIZE_URL="https://dev-identityaccess.auth0.com/authorize?client_id=7r6p7YLCRNJnQeuOk5zMqwPrsJeDDQMo&audience=outdoors&response_type=token&scope=openid+profile+email&redirect_uri=https://outdoorschallenge.herokuapp.com/login-results"
 #url for getting user info if scope is passed (for reference only)
 AUTH0_USER_INF0="https://dev-identityaccess.auth0.com/userinfo" # pass bearer token
 # url to logout.

@@ -94,6 +94,7 @@ def get_task(jwt, task_id):
         abort(404)
 
     s = []
+    challenges = task.challenges
     for challenge in challenges:
         series = challenge.series
         s.append({

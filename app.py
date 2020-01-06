@@ -197,7 +197,7 @@ def create_series(jwt):
 
 @app.route('/serie/<series_id>', methods=['GET'])
 @requires_auth()
-def get_serie(series_id):
+def get_serie(jwt, series_id):
     serie = Series.query.get(series_id)
     if serie is None:
         abort(404)
@@ -209,7 +209,7 @@ def get_serie(series_id):
         task = challenge.task
         tasks.append({
             "id": task.id,
-            "name": task.name,
+            "name": task.name,  
             "state": task.state,
             "country": task.country
         })

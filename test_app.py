@@ -51,7 +51,15 @@ class GetOutdoorsCase(unittest.TestCase):
         for serie in series:
             DBHelper.delete(serie)
 
-        tasks = Task.query.filter(Task.isTest == True)
+        series = Series.query.filter(Series.name.contains("test"))
+        for serie in series:
+            DBHelper.delete(serie)
+
+        tasks = Task.query.filter(Task.isTest == True).filter(Series.name.contains("test"))
+        for task in tasks:
+            DBHelper.delete(task)
+
+        asks = Task.query.filter(Series.name.contains("test"))
         for task in tasks:
             DBHelper.delete(task)
     

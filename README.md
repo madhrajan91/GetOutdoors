@@ -1,5 +1,5 @@
 # APP ON HEROKU
-https://outdoorschallenge.herokuapp.com/
+https://outdoorschallenge.herokuapp.com/ (has login link)
 https://outdoorschallenge.herokuapp.com/login-results
 
 https://outdoorschallenge.herokuapp.com/logout

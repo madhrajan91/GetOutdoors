@@ -240,7 +240,8 @@ class GetOutdoorsCase(unittest.TestCase):
         res = self.client.post("/series",
                                 data=json.dumps({
                                     "name": "testSeries",
-                                    "description": "testState"
+                                    "description": "testState",
+                                    "isTest": True
                                 }),  content_type="application/json")
         self.assertEqual(res.status_code, 200)
        
@@ -322,7 +323,8 @@ class GetOutdoorsCase(unittest.TestCase):
         res = self.client.post("/challenges",
                                 data=json.dumps({
                                     "task_id": str(task["id"]),
-                                    "series_id": str(series["id"])
+                                    "series_id": str(series["id"]),
+                                    "isTest": True
                                 }),  content_type="application/json")
         self.assertEqual(res.status_code, 200)
        

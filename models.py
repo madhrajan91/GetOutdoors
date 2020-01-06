@@ -89,7 +89,7 @@ class Challenge(Base):
 
 '''
 
-Ignore these 
+Ignore the tables below
 Users
 '''
 class User(Entity):

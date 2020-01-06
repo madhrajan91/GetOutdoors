@@ -1,0 +1,506 @@
+{
+	"info": {
+		"_postman_id": "32c94f41-cd49-437b-aec8-8ddcae43718d",
+		"name": "GetOutdoors",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "tasks",
+			"item": [
+				{
+					"name": "CreateTask",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5UbEROekV4UmpVNE9USXpSalk1TmtFMk0wUTNORFZFUWpoRlFUaERORFl3TkRZM05UazROUSJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZGVudGl0eWFjY2Vzcy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWRmOTcwMDIzNTZiMzcwZTllMTg4NDlkIiwiYXVkIjpbIm91dGRvb3JzIiwiaHR0cHM6Ly9kZXYtaWRlbnRpdHlhY2Nlc3MuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU3ODI2OTUwOSwiZXhwIjoxNTc4Mjc2NzA5LCJhenAiOiI3cjZwN1lMQ1JOSm5RZXVPazV6TXF3UHJzSmVERFFNbyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJnZXQ6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJwYXRjaDp0YXNrczpzZXJpZXM6Y2hhbGxlbmdlcyIsInBvc3Q6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiXX0.uRsAij0XVqz-WL0s8dKxakoGNxb7eAaBLdry7R7hqGiMGp2x1bpq-fGEaqvTAgeSwXgyySIqEiT49YUYkgr-8HJ6DMJn7ztH2OcNHf9YMDACN7f5PtfHzZGWP63vKryMaO4trDdoYOBYVnnbCeXsYFVIK0LnqIZ2Zt5-h9fJ9xYKakP0ykE2OMO5seWMyz_OgNB5XE3h8BpII4V-yAl4-sXxqoGmx9jv5-cPRr6Cqlegb8kXsvyEht0S9oLsYIA6fGaoV-fayAS7z-gx1fLxnFgjth4Ony7q-9CT-N7zRltbP29ekogIJeJTOqPeW0iY7iVEXVnJT4ebbcQJuh-xzw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Mansfield\",\n\t\"state\": \"Vermont\",\n\t\"country\": \"country\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://outdoorschallenge.herokuapp.com/tasks",
+							"protocol": "https",
+							"host": [
+								"outdoorschallenge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateTask",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5UbEROekV4UmpVNE9USXpSalk1TmtFMk0wUTNORFZFUWpoRlFUaERORFl3TkRZM05UazROUSJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZGVudGl0eWFjY2Vzcy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWRmOTcwMDIzNTZiMzcwZTllMTg4NDlkIiwiYXVkIjpbIm91dGRvb3JzIiwiaHR0cHM6Ly9kZXYtaWRlbnRpdHlhY2Nlc3MuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU3ODI2OTUwOSwiZXhwIjoxNTc4Mjc2NzA5LCJhenAiOiI3cjZwN1lMQ1JOSm5RZXVPazV6TXF3UHJzSmVERFFNbyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJnZXQ6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJwYXRjaDp0YXNrczpzZXJpZXM6Y2hhbGxlbmdlcyIsInBvc3Q6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiXX0.uRsAij0XVqz-WL0s8dKxakoGNxb7eAaBLdry7R7hqGiMGp2x1bpq-fGEaqvTAgeSwXgyySIqEiT49YUYkgr-8HJ6DMJn7ztH2OcNHf9YMDACN7f5PtfHzZGWP63vKryMaO4trDdoYOBYVnnbCeXsYFVIK0LnqIZ2Zt5-h9fJ9xYKakP0ykE2OMO5seWMyz_OgNB5XE3h8BpII4V-yAl4-sXxqoGmx9jv5-cPRr6Cqlegb8kXsvyEht0S9oLsYIA6fGaoV-fayAS7z-gx1fLxnFgjth4Ony7q-9CT-N7zRltbP29ekogIJeJTOqPeW0iY7iVEXVnJT4ebbcQJuh-xzw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Mansfield1\",\n\t\"state\": \"Vermont\",\n\t\"country\": \"country\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://outdoorschallenge.herokuapp.com/task/240",
+							"protocol": "https",
+							"host": [
+								"outdoorschallenge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"task",
+								"240"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteTask",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5UbEROekV4UmpVNE9USXpSalk1TmtFMk0wUTNORFZFUWpoRlFUaERORFl3TkRZM05UazROUSJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZGVudGl0eWFjY2Vzcy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWRmOTcwMDIzNTZiMzcwZTllMTg4NDlkIiwiYXVkIjpbIm91dGRvb3JzIiwiaHR0cHM6Ly9kZXYtaWRlbnRpdHlhY2Nlc3MuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU3ODI2OTUwOSwiZXhwIjoxNTc4Mjc2NzA5LCJhenAiOiI3cjZwN1lMQ1JOSm5RZXVPazV6TXF3UHJzSmVERFFNbyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJnZXQ6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJwYXRjaDp0YXNrczpzZXJpZXM6Y2hhbGxlbmdlcyIsInBvc3Q6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiXX0.uRsAij0XVqz-WL0s8dKxakoGNxb7eAaBLdry7R7hqGiMGp2x1bpq-fGEaqvTAgeSwXgyySIqEiT49YUYkgr-8HJ6DMJn7ztH2OcNHf9YMDACN7f5PtfHzZGWP63vKryMaO4trDdoYOBYVnnbCeXsYFVIK0LnqIZ2Zt5-h9fJ9xYKakP0ykE2OMO5seWMyz_OgNB5XE3h8BpII4V-yAl4-sXxqoGmx9jv5-cPRr6Cqlegb8kXsvyEht0S9oLsYIA6fGaoV-fayAS7z-gx1fLxnFgjth4Ony7q-9CT-N7zRltbP29ekogIJeJTOqPeW0iY7iVEXVnJT4ebbcQJuh-xzw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://outdoorschallenge.herokuapp.com/task/257",
+							"protocol": "https",
+							"host": [
+								"outdoorschallenge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"task",
+								"257"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetTasks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5UbEROekV4UmpVNE9USXpSalk1TmtFMk0wUTNORFZFUWpoRlFUaERORFl3TkRZM05UazROUSJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZGVudGl0eWFjY2Vzcy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWRmOTcwMDIzNTZiMzcwZTllMTg4NDlkIiwiYXVkIjpbIm91dGRvb3JzIiwiaHR0cHM6Ly9kZXYtaWRlbnRpdHlhY2Nlc3MuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU3ODI3Njg4MCwiZXhwIjoxNTc4Mjg0MDgwLCJhenAiOiI3cjZwN1lMQ1JOSm5RZXVPazV6TXF3UHJzSmVERFFNbyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJnZXQ6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJwYXRjaDp0YXNrczpzZXJpZXM6Y2hhbGxlbmdlcyIsInBvc3Q6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiXX0.rCZyqCV2Lwlh1eKdThiXilpBKoWeeQ-sa_GduFWsFy2V-orLzwmc6uqdkkatmJ31z4B09dn5SKm3kFNVAeBr-0kM-a9bTuklr62fR8lHlqBtTqtyaYA9LDa8jCSgIwRTNU1d-CEThCpXlamv__tv_XN8gv1GvcJSUv7YWn0RIMAWGDyGfia3kiIZZN9BaxxyehcGlxoH3sLA6aJhryPhmn2r_ieSPpwj6mh3TmV96azMV_RPS1ytXheVXNLdvXDqeFr5X3LNb65rQ7yyPmTcW9WFE_vFocsT6FbVvGt9r-XKYQijwCUIVGnaOi7LjOPekUNawdh9xtAXbvTjJ1hzeQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://outdoorschallenge.herokuapp.com/tasks",
+							"protocol": "https",
+							"host": [
+								"outdoorschallenge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetTask",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5UbEROekV4UmpVNE9USXpSalk1TmtFMk0wUTNORFZFUWpoRlFUaERORFl3TkRZM05UazROUSJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZGVudGl0eWFjY2Vzcy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWRmOTcwMDIzNTZiMzcwZTllMTg4NDlkIiwiYXVkIjpbIm91dGRvb3JzIiwiaHR0cHM6Ly9kZXYtaWRlbnRpdHlhY2Nlc3MuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU3ODI3Njg4MCwiZXhwIjoxNTc4Mjg0MDgwLCJhenAiOiI3cjZwN1lMQ1JOSm5RZXVPazV6TXF3UHJzSmVERFFNbyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJnZXQ6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJwYXRjaDp0YXNrczpzZXJpZXM6Y2hhbGxlbmdlcyIsInBvc3Q6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiXX0.rCZyqCV2Lwlh1eKdThiXilpBKoWeeQ-sa_GduFWsFy2V-orLzwmc6uqdkkatmJ31z4B09dn5SKm3kFNVAeBr-0kM-a9bTuklr62fR8lHlqBtTqtyaYA9LDa8jCSgIwRTNU1d-CEThCpXlamv__tv_XN8gv1GvcJSUv7YWn0RIMAWGDyGfia3kiIZZN9BaxxyehcGlxoH3sLA6aJhryPhmn2r_ieSPpwj6mh3TmV96azMV_RPS1ytXheVXNLdvXDqeFr5X3LNb65rQ7yyPmTcW9WFE_vFocsT6FbVvGt9r-XKYQijwCUIVGnaOi7LjOPekUNawdh9xtAXbvTjJ1hzeQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://outdoorschallenge.herokuapp.com/task/1",
+							"protocol": "https",
+							"host": [
+								"outdoorschallenge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"task",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "series",
+			"item": [
+				{
+					"name": "GetSeries",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5UbEROekV4UmpVNE9USXpSalk1TmtFMk0wUTNORFZFUWpoRlFUaERORFl3TkRZM05UazROUSJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZGVudGl0eWFjY2Vzcy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWRmOTcwMDIzNTZiMzcwZTllMTg4NDlkIiwiYXVkIjpbIm91dGRvb3JzIiwiaHR0cHM6Ly9kZXYtaWRlbnRpdHlhY2Nlc3MuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU3ODI3Njg4MCwiZXhwIjoxNTc4Mjg0MDgwLCJhenAiOiI3cjZwN1lMQ1JOSm5RZXVPazV6TXF3UHJzSmVERFFNbyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJnZXQ6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJwYXRjaDp0YXNrczpzZXJpZXM6Y2hhbGxlbmdlcyIsInBvc3Q6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiXX0.rCZyqCV2Lwlh1eKdThiXilpBKoWeeQ-sa_GduFWsFy2V-orLzwmc6uqdkkatmJ31z4B09dn5SKm3kFNVAeBr-0kM-a9bTuklr62fR8lHlqBtTqtyaYA9LDa8jCSgIwRTNU1d-CEThCpXlamv__tv_XN8gv1GvcJSUv7YWn0RIMAWGDyGfia3kiIZZN9BaxxyehcGlxoH3sLA6aJhryPhmn2r_ieSPpwj6mh3TmV96azMV_RPS1ytXheVXNLdvXDqeFr5X3LNb65rQ7yyPmTcW9WFE_vFocsT6FbVvGt9r-XKYQijwCUIVGnaOi7LjOPekUNawdh9xtAXbvTjJ1hzeQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://outdoorschallenge.herokuapp.com/series",
+							"protocol": "https",
+							"host": [
+								"outdoorschallenge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"series"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetSerie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5UbEROekV4UmpVNE9USXpSalk1TmtFMk0wUTNORFZFUWpoRlFUaERORFl3TkRZM05UazROUSJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZGVudGl0eWFjY2Vzcy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWRmOTcwMDIzNTZiMzcwZTllMTg4NDlkIiwiYXVkIjpbIm91dGRvb3JzIiwiaHR0cHM6Ly9kZXYtaWRlbnRpdHlhY2Nlc3MuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU3ODI3Njg4MCwiZXhwIjoxNTc4Mjg0MDgwLCJhenAiOiI3cjZwN1lMQ1JOSm5RZXVPazV6TXF3UHJzSmVERFFNbyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJnZXQ6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJwYXRjaDp0YXNrczpzZXJpZXM6Y2hhbGxlbmdlcyIsInBvc3Q6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiXX0.rCZyqCV2Lwlh1eKdThiXilpBKoWeeQ-sa_GduFWsFy2V-orLzwmc6uqdkkatmJ31z4B09dn5SKm3kFNVAeBr-0kM-a9bTuklr62fR8lHlqBtTqtyaYA9LDa8jCSgIwRTNU1d-CEThCpXlamv__tv_XN8gv1GvcJSUv7YWn0RIMAWGDyGfia3kiIZZN9BaxxyehcGlxoH3sLA6aJhryPhmn2r_ieSPpwj6mh3TmV96azMV_RPS1ytXheVXNLdvXDqeFr5X3LNb65rQ7yyPmTcW9WFE_vFocsT6FbVvGt9r-XKYQijwCUIVGnaOi7LjOPekUNawdh9xtAXbvTjJ1hzeQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://outdoorschallenge.herokuapp.com/serie/215",
+							"protocol": "https",
+							"host": [
+								"outdoorschallenge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"serie",
+								"215"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateSeries",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5UbEROekV4UmpVNE9USXpSalk1TmtFMk0wUTNORFZFUWpoRlFUaERORFl3TkRZM05UazROUSJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZGVudGl0eWFjY2Vzcy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWRmOTcwMDIzNTZiMzcwZTllMTg4NDlkIiwiYXVkIjpbIm91dGRvb3JzIiwiaHR0cHM6Ly9kZXYtaWRlbnRpdHlhY2Nlc3MuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU3ODI2OTUwOSwiZXhwIjoxNTc4Mjc2NzA5LCJhenAiOiI3cjZwN1lMQ1JOSm5RZXVPazV6TXF3UHJzSmVERFFNbyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJnZXQ6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJwYXRjaDp0YXNrczpzZXJpZXM6Y2hhbGxlbmdlcyIsInBvc3Q6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiXX0.uRsAij0XVqz-WL0s8dKxakoGNxb7eAaBLdry7R7hqGiMGp2x1bpq-fGEaqvTAgeSwXgyySIqEiT49YUYkgr-8HJ6DMJn7ztH2OcNHf9YMDACN7f5PtfHzZGWP63vKryMaO4trDdoYOBYVnnbCeXsYFVIK0LnqIZ2Zt5-h9fJ9xYKakP0ykE2OMO5seWMyz_OgNB5XE3h8BpII4V-yAl4-sXxqoGmx9jv5-cPRr6Cqlegb8kXsvyEht0S9oLsYIA6fGaoV-fayAS7z-gx1fLxnFgjth4Ony7q-9CT-N7zRltbP29ekogIJeJTOqPeW0iY7iVEXVnJT4ebbcQJuh-xzw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"NH48\",\n\t\"description\": \"NH 4000 footers\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://outdoorschallenge.herokuapp.com/series",
+							"protocol": "https",
+							"host": [
+								"outdoorschallenge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"series"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateSeries",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5UbEROekV4UmpVNE9USXpSalk1TmtFMk0wUTNORFZFUWpoRlFUaERORFl3TkRZM05UazROUSJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZGVudGl0eWFjY2Vzcy5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMDIyMTgwNTI0NjQ0NjIxOTgxNzIiLCJhdWQiOlsib3V0ZG9vcnMiLCJodHRwczovL2Rldi1pZGVudGl0eWFjY2Vzcy5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTc3NTcxNjM5LCJleHAiOjE1Nzc1Nzg4MzksImF6cCI6IjdyNnA3WUxDUk5KblFldU9rNXpNcXdQcnNKZUREUU1vIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInBlcm1pc3Npb25zIjpbXX0.XjgxcqJOGuyc9_McQ6hORWiY-TzN8HdqDQnj3JDNGOerdEMfGoTIPsVMpB8x7fCwNjwyCPhLccUGHi5F88_KUSRYKLsgqE-EucXffSlHT7zR6uxPF55h-fvIUNCkm7wK0y6nJ3LbkccQJCgUQnVjrWymxFXSvPR8tu9e8vQHpxWoyul1do1jDc5nen_lr5ZQ778lXzAHSy1TidX_xCHuoPVs2AthBAtGcNQ4ow4aFE3G8Hg236N4KWjzWXkvYv9r65fExPyqHJVjsOpTELXDLFY1WuJitCKVoAfdx803GNvDT-goXyACHVJx_3ddyjA4f8NH07ApRhSoPGrJoroVgA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "https://outdoorschallenge.herokuapp.com/series/<id>",
+							"protocol": "https",
+							"host": [
+								"outdoorschallenge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"series",
+								"<id>"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteSeries",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5UbEROekV4UmpVNE9USXpSalk1TmtFMk0wUTNORFZFUWpoRlFUaERORFl3TkRZM05UazROUSJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZGVudGl0eWFjY2Vzcy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWRmOTcwMDIzNTZiMzcwZTllMTg4NDlkIiwiYXVkIjpbIm91dGRvb3JzIiwiaHR0cHM6Ly9kZXYtaWRlbnRpdHlhY2Nlc3MuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU3ODI2OTUwOSwiZXhwIjoxNTc4Mjc2NzA5LCJhenAiOiI3cjZwN1lMQ1JOSm5RZXVPazV6TXF3UHJzSmVERFFNbyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJnZXQ6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJwYXRjaDp0YXNrczpzZXJpZXM6Y2hhbGxlbmdlcyIsInBvc3Q6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiXX0.uRsAij0XVqz-WL0s8dKxakoGNxb7eAaBLdry7R7hqGiMGp2x1bpq-fGEaqvTAgeSwXgyySIqEiT49YUYkgr-8HJ6DMJn7ztH2OcNHf9YMDACN7f5PtfHzZGWP63vKryMaO4trDdoYOBYVnnbCeXsYFVIK0LnqIZ2Zt5-h9fJ9xYKakP0ykE2OMO5seWMyz_OgNB5XE3h8BpII4V-yAl4-sXxqoGmx9jv5-cPRr6Cqlegb8kXsvyEht0S9oLsYIA6fGaoV-fayAS7z-gx1fLxnFgjth4Ony7q-9CT-N7zRltbP29ekogIJeJTOqPeW0iY7iVEXVnJT4ebbcQJuh-xzw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://outdoorschallenge.herokuapp.com/series/161",
+							"protocol": "https",
+							"host": [
+								"outdoorschallenge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"series",
+								"161"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "challenges",
+			"item": [
+				{
+					"name": "PostChallenges",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5UbEROekV4UmpVNE9USXpSalk1TmtFMk0wUTNORFZFUWpoRlFUaERORFl3TkRZM05UazROUSJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZGVudGl0eWFjY2Vzcy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWRmOTcwMDIzNTZiMzcwZTllMTg4NDlkIiwiYXVkIjpbIm91dGRvb3JzIiwiaHR0cHM6Ly9kZXYtaWRlbnRpdHlhY2Nlc3MuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU3ODI2OTUwOSwiZXhwIjoxNTc4Mjc2NzA5LCJhenAiOiI3cjZwN1lMQ1JOSm5RZXVPazV6TXF3UHJzSmVERFFNbyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJnZXQ6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJwYXRjaDp0YXNrczpzZXJpZXM6Y2hhbGxlbmdlcyIsInBvc3Q6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiXX0.uRsAij0XVqz-WL0s8dKxakoGNxb7eAaBLdry7R7hqGiMGp2x1bpq-fGEaqvTAgeSwXgyySIqEiT49YUYkgr-8HJ6DMJn7ztH2OcNHf9YMDACN7f5PtfHzZGWP63vKryMaO4trDdoYOBYVnnbCeXsYFVIK0LnqIZ2Zt5-h9fJ9xYKakP0ykE2OMO5seWMyz_OgNB5XE3h8BpII4V-yAl4-sXxqoGmx9jv5-cPRr6Cqlegb8kXsvyEht0S9oLsYIA6fGaoV-fayAS7z-gx1fLxnFgjth4Ony7q-9CT-N7zRltbP29ekogIJeJTOqPeW0iY7iVEXVnJT4ebbcQJuh-xzw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"task_id\": 2,\n\t\"series_id\": 215\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://outdoorschallenge.herokuapp.com/challenges",
+							"protocol": "https",
+							"host": [
+								"outdoorschallenge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"challenges"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateChallenge",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5UbEROekV4UmpVNE9USXpSalk1TmtFMk0wUTNORFZFUWpoRlFUaERORFl3TkRZM05UazROUSJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZGVudGl0eWFjY2Vzcy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWRmOTcwMDIzNTZiMzcwZTllMTg4NDlkIiwiYXVkIjpbIm91dGRvb3JzIiwiaHR0cHM6Ly9kZXYtaWRlbnRpdHlhY2Nlc3MuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU3ODI2OTUwOSwiZXhwIjoxNTc4Mjc2NzA5LCJhenAiOiI3cjZwN1lMQ1JOSm5RZXVPazV6TXF3UHJzSmVERFFNbyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJnZXQ6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJwYXRjaDp0YXNrczpzZXJpZXM6Y2hhbGxlbmdlcyIsInBvc3Q6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiXX0.uRsAij0XVqz-WL0s8dKxakoGNxb7eAaBLdry7R7hqGiMGp2x1bpq-fGEaqvTAgeSwXgyySIqEiT49YUYkgr-8HJ6DMJn7ztH2OcNHf9YMDACN7f5PtfHzZGWP63vKryMaO4trDdoYOBYVnnbCeXsYFVIK0LnqIZ2Zt5-h9fJ9xYKakP0ykE2OMO5seWMyz_OgNB5XE3h8BpII4V-yAl4-sXxqoGmx9jv5-cPRr6Cqlegb8kXsvyEht0S9oLsYIA6fGaoV-fayAS7z-gx1fLxnFgjth4Ony7q-9CT-N7zRltbP29ekogIJeJTOqPeW0iY7iVEXVnJT4ebbcQJuh-xzw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"task_id\": 1,\n\t\"series_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://outdoorschallenge.herokuapp.com/challenge/1",
+							"protocol": "https",
+							"host": [
+								"outdoorschallenge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"challenge",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteChallenge",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik5UbEROekV4UmpVNE9USXpSalk1TmtFMk0wUTNORFZFUWpoRlFUaERORFl3TkRZM05UazROUSJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZGVudGl0eWFjY2Vzcy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWRmOTcwMDIzNTZiMzcwZTllMTg4NDlkIiwiYXVkIjpbIm91dGRvb3JzIiwiaHR0cHM6Ly9kZXYtaWRlbnRpdHlhY2Nlc3MuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU3ODI2OTUwOSwiZXhwIjoxNTc4Mjc2NzA5LCJhenAiOiI3cjZwN1lMQ1JOSm5RZXVPazV6TXF3UHJzSmVERFFNbyIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJnZXQ6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiLCJwYXRjaDp0YXNrczpzZXJpZXM6Y2hhbGxlbmdlcyIsInBvc3Q6dGFza3M6c2VyaWVzOmNoYWxsZW5nZXMiXX0.uRsAij0XVqz-WL0s8dKxakoGNxb7eAaBLdry7R7hqGiMGp2x1bpq-fGEaqvTAgeSwXgyySIqEiT49YUYkgr-8HJ6DMJn7ztH2OcNHf9YMDACN7f5PtfHzZGWP63vKryMaO4trDdoYOBYVnnbCeXsYFVIK0LnqIZ2Zt5-h9fJ9xYKakP0ykE2OMO5seWMyz_OgNB5XE3h8BpII4V-yAl4-sXxqoGmx9jv5-cPRr6Cqlegb8kXsvyEht0S9oLsYIA6fGaoV-fayAS7z-gx1fLxnFgjth4Ony7q-9CT-N7zRltbP29ekogIJeJTOqPeW0iY7iVEXVnJT4ebbcQJuh-xzw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://outdoorschallenge.herokuapp.com/challenge/1",
+							"protocol": "https",
+							"host": [
+								"outdoorschallenge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"challenge",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

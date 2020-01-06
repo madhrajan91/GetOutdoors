@@ -59,7 +59,7 @@ class GetOutdoorsCase(unittest.TestCase):
         for task in tasks:
             DBHelper.delete(task)
 
-        asks = Task.query.filter(Series.name.contains("test"))
+        asks = Task.query.filter(Task.name.contains("test"))
         for task in tasks:
             DBHelper.delete(task)
     

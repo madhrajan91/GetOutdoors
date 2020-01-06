@@ -20,7 +20,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db.init_app(app)
 db.app = app # this needs to be inserted
-#db.create_all()
+
 #migrate
 migrate =  Migrate(app, db)
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)

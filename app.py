@@ -46,6 +46,7 @@ def get_tasks(jwt):
     result = []
     for task in tasks:
         result.append({
+            'id': task.id,
             'name': task.name,
             'state': task.state,
             'country': task.country
@@ -93,6 +94,7 @@ def get_task(jwt, task_id):
         abort(404)
 
     return jsonify({
+            'id': task.id,
             'name': task.name,
             'state': task.state,
             'country': task.country
@@ -161,6 +163,7 @@ def get_series(jwt):
     result = []
     for s in series:
         result.append({
+            'id': s.id,
             'name': s.name,
             'description': s.description
         })
@@ -205,12 +208,14 @@ def get_serie(series_id):
     for challenge in challenges:
         task = challenge.task
         tasks.append({
+            "id": task.id,
             "name": task.name,
             "state": task.state,
             "country": task.country
         })
 
     return jsonify({
+            'id': serie.id,
             'name': serie.name,
             'description': serie.description,
             'tasks' : tasks
